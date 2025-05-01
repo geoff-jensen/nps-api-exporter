@@ -45,7 +45,7 @@ def flatten_park(park):
     # Flatten activities to a comma-separated string of names
     activities = ", ".join([a["name"] for a in park.get("activities", [])])
 
-    # Flatten operating hours (usually just one item in the list)
+    # Flatten operating hours
     hours_list = park.get("operatingHours", [])
     if hours_list:
         description = hours_list[0].get("description", "")
@@ -63,9 +63,6 @@ def flatten_park(park):
         activities,
         f"{description} | {hours}"
     ]
-
-
-
 
 with open("parks_sample_output.csv", "w", newline="", encoding="utf-8") as f:
     writer = csv.writer(f)
